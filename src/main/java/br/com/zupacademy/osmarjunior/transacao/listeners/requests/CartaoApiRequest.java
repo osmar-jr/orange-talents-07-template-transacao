@@ -1,4 +1,4 @@
-package br.com.zupacademy.osmarjunior.transacao.requests;
+package br.com.zupacademy.osmarjunior.transacao.listeners.requests;
 
 import br.com.zupacademy.osmarjunior.transacao.model.Cartao;
 
@@ -25,14 +25,6 @@ public class CartaoApiRequest {
 
     public String getEmail() {
         return email;
-    }
-
-    @Override
-    public String toString() {
-        return "CartaoApiRequest{" +
-                "id='" + id + '\'' +
-                ", email='" + email + '\'' +
-                '}';
     }
 
     public Cartao toCartao() {

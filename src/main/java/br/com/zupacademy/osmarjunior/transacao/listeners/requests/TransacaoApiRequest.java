@@ -1,4 +1,4 @@
-package br.com.zupacademy.osmarjunior.transacao.requests;
+package br.com.zupacademy.osmarjunior.transacao.listeners.requests;
 
 import br.com.zupacademy.osmarjunior.transacao.model.Cartao;
 import br.com.zupacademy.osmarjunior.transacao.model.Estabelecimento;
@@ -74,16 +74,5 @@ public class TransacaoApiRequest {
         Cartao novoCartao = this.cartao.toCartao();
         cartaoRepository.save(novoCartao);
         return novoCartao;
-    }
-
-    @Override
-    public String toString() {
-        return "TransacaoApiRequest{" +
-                "id='" + id + '\'' +
-                ", valor=" + valor +
-                ", estabelecimento=" + estabelecimento +
-                ", cartao=" + cartao +
-                ", efetivadaEm=" + efetivadaEm +
-                '}';
     }
 }

@@ -1,5 +1,7 @@
 package br.com.zupacademy.osmarjunior.transacao.model;
 
+import br.com.zupacademy.osmarjunior.transacao.controller.response.EstabelecimentoResponse;
+
 import javax.persistence.*;
 
 @Entity
@@ -22,5 +24,9 @@ public class Estabelecimento {
         this.nome = nome;
         this.cidade = cidade;
         this.endereco = endereco;
+    }
+
+    public EstabelecimentoResponse toEstabelecimentoResponse(){
+        return new EstabelecimentoResponse(this.nome, this.cidade, this.endereco);
     }
 }

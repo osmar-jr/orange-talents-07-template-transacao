@@ -1,6 +1,6 @@
 package br.com.zupacademy.osmarjunior.transacao.config;
 
-import br.com.zupacademy.osmarjunior.transacao.requests.TransacaoApiRequest;
+import br.com.zupacademy.osmarjunior.transacao.listeners.requests.TransacaoApiRequest;
 import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.common.serialization.StringDeserializer;
 import org.springframework.boot.autoconfigure.kafka.KafkaProperties;

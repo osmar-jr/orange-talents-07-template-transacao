@@ -1,4 +1,4 @@
-package br.com.zupacademy.osmarjunior.transacao.requests;
+package br.com.zupacademy.osmarjunior.transacao.listeners.requests;
 
 import br.com.zupacademy.osmarjunior.transacao.model.Estabelecimento;
 
@@ -20,7 +20,7 @@ public class EstabelecimentoApiRequest {
 
     /**
      * Getters para serialização pela api de serviço
-     * */
+     */
     public String getNome() {
         return nome;
     }
@@ -31,15 +31,6 @@ public class EstabelecimentoApiRequest {
 
     public String getEndereco() {
         return endereco;
-    }
-
-    @Override
-    public String toString() {
-        return "EstabelecimentoApiRequest{" +
-                "nome='" + nome + '\'' +
-                ", cidade='" + cidade + '\'' +
-                ", endereco='" + endereco + '\'' +
-                '}';
     }
 
     public Estabelecimento toEstabelecimento() {

@@ -1,8 +1,11 @@
 package br.com.zupacademy.osmarjunior.transacao.model;
 
+import br.com.zupacademy.osmarjunior.transacao.controller.response.TransacaoResponse;
+
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.Objects;
 
 @Entity
 public class Transacao {
@@ -10,14 +13,16 @@ public class Transacao {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     private Long id;
-    private String idApiTransacoes;
+
+    @Column(unique = true)
+    private String transacaoApiId;
     private BigDecimal valor;
 
-    @ManyToOne(cascade = CascadeType.PERSIST)
-    private Estabelecimento estabelecimentoTransacao;
+    @ManyToOne(cascade = CascadeType.ALL)
+    private Estabelecimento estabelecimento;
 
-    @ManyToOne(cascade = CascadeType.PERSIST)
-    private Cartao cartaoTransacao;
+    @ManyToOne
+    private Cartao cartao;
 
     private LocalDateTime efetivadaEm;
 
@@ -25,12 +30,21 @@ public class Transacao {
     public Transacao() {
     }
 
-    public Transacao(String idApiTransacoes, BigDecimal valor, Estabelecimento estabelecimentoTransacao, Cartao cartaoTransacao, LocalDateTime efetivadaEm) {
+    public Transacao(String transacaoApiId,
+                     BigDecimal valor,
+                     Estabelecimento estabelecimento,
+                     Cartao cartao,
+                     LocalDateTime efetivadaEm) {
 
-        this.idApiTransacoes = idApiTransacoes;
+        this.transacaoApiId = transacaoApiId;
         this.valor = valor;
-        this.estabelecimentoTransacao = estabelecimentoTransacao;
-        this.cartaoTransacao = cartaoTransacao;
+        this.estabelecimento = estabelecimento;
+        this.cartao = cartao;
         this.efetivadaEm = efetivadaEm;
     }
+
+    public TransacaoResponse toTransacaoResponse() {
+        return new TransacaoResponse(this.transacaoApiId, this.valor, this.efetivadaEm, this.estabelecimento);
+    }
+
 }

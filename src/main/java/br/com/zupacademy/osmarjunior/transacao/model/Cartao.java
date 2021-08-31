@@ -9,16 +9,18 @@ public class Cartao {
     @Column(name = "id", nullable = false)
     private Long id;
 
-    private String idApiTransacoes;
+    @Column(unique = true)
+    private String cartaoApiId;
+
     private String email;
 
     @Deprecated
     public Cartao() {
     }
 
-    public Cartao(String idApiTransacoes, String email) {
+    public Cartao(String cartaoApiId, String email) {
 
-        this.idApiTransacoes = idApiTransacoes;
+        this.cartaoApiId = cartaoApiId;
         this.email = email;
     }
 }
