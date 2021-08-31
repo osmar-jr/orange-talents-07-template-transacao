@@ -1,6 +1,6 @@
-package br.com.zupacademy.osmarjunior.requests;
+package br.com.zupacademy.osmarjunior.transacao.requests;
 
-import br.com.zupacademy.osmarjunior.model.Estabelecimento;
+import br.com.zupacademy.osmarjunior.transacao.model.Estabelecimento;
 
 public class EstabelecimentoApiRequest {
 
@@ -31,6 +31,15 @@ public class EstabelecimentoApiRequest {
 
     public String getEndereco() {
         return endereco;
+    }
+
+    @Override
+    public String toString() {
+        return "EstabelecimentoApiRequest{" +
+                "nome='" + nome + '\'' +
+                ", cidade='" + cidade + '\'' +
+                ", endereco='" + endereco + '\'' +
+                '}';
     }
 
     public Estabelecimento toEstabelecimento() {

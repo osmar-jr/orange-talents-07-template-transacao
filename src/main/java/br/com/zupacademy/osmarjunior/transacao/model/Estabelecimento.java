@@ -1,4 +1,4 @@
-package br.com.zupacademy.osmarjunior.model;
+package br.com.zupacademy.osmarjunior.transacao.model;
 
 import javax.persistence.*;
 

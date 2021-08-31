@@ -1,4 +1,4 @@
-package br.com.zupacademy.osmarjunior;
+package br.com.zupacademy.osmarjunior.transacao;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

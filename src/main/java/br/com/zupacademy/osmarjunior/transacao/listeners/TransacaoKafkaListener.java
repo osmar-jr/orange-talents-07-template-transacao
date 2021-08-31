@@ -1,8 +1,8 @@
-package br.com.zupacademy.osmarjunior.listeners;
+package br.com.zupacademy.osmarjunior.transacao.listeners;
 
-import br.com.zupacademy.osmarjunior.model.Transacao;
-import br.com.zupacademy.osmarjunior.repository.TransacaoRepository;
-import br.com.zupacademy.osmarjunior.requests.TransacaoApiRequest;
+import br.com.zupacademy.osmarjunior.transacao.model.Transacao;
+import br.com.zupacademy.osmarjunior.transacao.repository.TransacaoRepository;
+import br.com.zupacademy.osmarjunior.transacao.requests.TransacaoApiRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.stereotype.Component;
