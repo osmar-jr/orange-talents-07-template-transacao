@@ -5,6 +5,8 @@ import br.com.zupacademy.osmarjunior.transacao.model.Cartao;
 import br.com.zupacademy.osmarjunior.transacao.model.Transacao;
 import br.com.zupacademy.osmarjunior.transacao.repository.CartaoRepository;
 import br.com.zupacademy.osmarjunior.transacao.repository.TransacaoRepository;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -28,12 +30,15 @@ public class TransacaoController {
     @Autowired
     private CartaoRepository cartaoRepository;
 
+    private final Logger logger = LoggerFactory.getLogger(TransacaoController.class);
+
     @GetMapping(value = "/{cartaoId}")
     public ResponseEntity<?> ultimasTransacoes(@PathVariable("cartaoId") @NotNull Long cartaoId,
                                                   @PageableDefault(page = 0, size = 10) Pageable pageable){
 
         Optional<Cartao> optionalCartao = cartaoRepository.findById(cartaoId);
         if(optionalCartao.isEmpty()){
+            logger.info("Cartão informando na requisição da consulta não existe.");
             return ResponseEntity
                     .status(HttpStatus.NOT_FOUND)
                     .body("O cartão informado não existe no sistema.");
@@ -43,7 +48,7 @@ public class TransacaoController {
 
         Page<TransacaoResponse> transacoesResponsePage = TransacaoResponse
                 .toTransacoesResponsePage(transacoesPage);
-
+        logger.info("Consulta de Transações recentes realizada com sucesso para cartão de id: " + cartaoId);
         return ResponseEntity.ok().body(transacoesResponsePage);
     }
 }

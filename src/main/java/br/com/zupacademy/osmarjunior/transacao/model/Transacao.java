@@ -5,7 +5,6 @@ import br.com.zupacademy.osmarjunior.transacao.controller.response.TransacaoResp
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
-import java.util.Objects;
 
 @Entity
 public class Transacao {
@@ -46,5 +45,4 @@ public class Transacao {
     public TransacaoResponse toTransacaoResponse() {
         return new TransacaoResponse(this.transacaoApiId, this.valor, this.efetivadaEm, this.estabelecimento);
     }
-
 }

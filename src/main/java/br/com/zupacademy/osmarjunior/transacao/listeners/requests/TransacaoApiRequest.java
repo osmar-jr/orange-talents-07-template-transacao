@@ -4,6 +4,8 @@ import br.com.zupacademy.osmarjunior.transacao.model.Cartao;
 import br.com.zupacademy.osmarjunior.transacao.model.Estabelecimento;
 import br.com.zupacademy.osmarjunior.transacao.model.Transacao;
 import br.com.zupacademy.osmarjunior.transacao.repository.CartaoRepository;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
@@ -66,6 +68,7 @@ public class TransacaoApiRequest {
      * Cria o cartão no banco, caso não exista, visto que a base de dados neste projeto é nova.
      * */
     private Cartao criaOuCapturaCartao(CartaoRepository cartaoRepository) {
+        Logger logger = LoggerFactory.getLogger(Cartao.class);
         Optional<Cartao> optionalCartao = cartaoRepository.findByCartaoApiId(this.cartao.getId());
         if(optionalCartao.isPresent()){
             return optionalCartao.get();
@@ -73,6 +76,7 @@ public class TransacaoApiRequest {
 
         Cartao novoCartao = this.cartao.toCartao();
         cartaoRepository.save(novoCartao);
+        logger.info("Novo cartão salvo.");
         return novoCartao;
     }
 }
